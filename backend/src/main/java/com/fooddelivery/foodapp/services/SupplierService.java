@@ -1,5 +1,6 @@
 package com.fooddelivery.foodapp.services;
 
+
 import com.fooddelivery.foodapp.models.Delivery;
 import com.fooddelivery.foodapp.repositories.DeliveryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,9 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public class SupplierService {
-
+/*
     @Autowired
     private DeliveryRepository deliveryRepository;
 
@@ -31,4 +31,8 @@ public class SupplierService {
         Delivery delivery = deliveryRepository.findById(deliveryId).orElseThrow(() -> new IllegalArgumentException("Delivery not found"));
         return delivery.getStatus();
     }
+*/
+
 }
+
+

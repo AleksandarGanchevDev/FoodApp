@@ -15,7 +15,7 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
-
+    /*
     @PostMapping("/register")
     public void registerCustomer(@RequestBody Customer customer) {
         customerService.registerCustomer(customer);
@@ -40,4 +40,6 @@ public class CustomerController {
     public String getOrderStatus(@RequestParam Long orderId) {
         return customerService.getOrderStatus(orderId);
     }
+
+     */
 }

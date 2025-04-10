@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+/*
 @RestController
 @RequestMapping("/supplier")
 public class SupplierController {
@@ -29,3 +29,4 @@ public class SupplierController {
         return supplierService.getOrderStatus(orderId);
     }
 }
+*/

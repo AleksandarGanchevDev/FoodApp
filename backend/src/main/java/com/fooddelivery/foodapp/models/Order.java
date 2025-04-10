@@ -1,17 +1,15 @@
 package com.fooddelivery.foodapp.models;
 
-import javax.persistence.*;
+//import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Entity
 public class Order {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
     private Date orderDate;
     private String status;
 
+    /*
     @ManyToOne
     private Customer customer;
 
@@ -24,4 +22,6 @@ public class Order {
 
     @OneToOne
     private Supplier supplier;
+
+     */
 }

@@ -13,7 +13,7 @@ import java.util.List;
 
 @Service
 public class CustomerService {
-
+    /*
     @Autowired
     private CustomerRepository customerRepository;
     @Autowired
@@ -45,4 +45,5 @@ public class CustomerService {
         Order order = orderRepository.findById(orderId).orElseThrow(() -> new IllegalArgumentException("Order not found"));
         return order.getStatus();
     }
+    */
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EmployeeService {
-
+/*
     @Autowired
     private RestaurantRepository restaurantRepository;
     @Autowired
@@ -19,6 +19,7 @@ public class EmployeeService {
         restaurantRepository.save(restaurant);
     }
 
+    /*
     public void editRestaurant(Long id, Restaurant updatedRestaurant) {
         Restaurant restaurant = restaurantRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Restaurant not found"));
         restaurant.setName(updatedRestaurant.getName());
@@ -45,4 +46,6 @@ public class EmployeeService {
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
+
+*/
 }

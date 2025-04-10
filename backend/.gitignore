@@ -31,3 +31,12 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Firebase ###
+firebase-service-account.json
+/src/main/resources/firebase-service-account.json
+/src/main/resources/application-*.properties
+*.key
+*.p12
+*.cer
+*.jks

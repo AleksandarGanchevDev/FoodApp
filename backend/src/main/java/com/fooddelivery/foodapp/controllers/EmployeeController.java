@@ -12,11 +12,12 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
-
+/*
     @PostMapping("/restaurant")
     public void addRestaurant(@RequestBody Restaurant restaurant) {
         employeeService.addRestaurant(restaurant);
     }
+
 
     @PutMapping("/restaurant/{id}")
     public void editRestaurant(@PathVariable Long id, @RequestBody Restaurant updatedRestaurant) {
@@ -42,4 +43,6 @@ public class EmployeeController {
     public void deleteProduct(@PathVariable Long id) {
         employeeService.deleteProduct(id);
     }
+
+     */
 }
