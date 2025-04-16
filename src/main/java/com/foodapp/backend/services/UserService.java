@@ -2,7 +2,6 @@ package com.foodapp.backend.services;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import java.util.concurrent.CompletableFuture;
 import com.foodapp.backend.models.User;
 import com.foodapp.backend.repositories.UserRepository;
 import com.foodapp.backend.security.JwtUtil;
@@ -20,16 +19,16 @@ public class UserService {
     this.jwtUtil = jwtUtil;
   }
 
-  public CompletableFuture<String> register(User user) {
+  public String register(User user) {
     user.setPassword(passwordEncoder.encode(user.getPassword()));
     userRepository.save(user);
-    return CompletableFuture.completedFuture(jwtUtil.generateToken(user.getUsername()));
+    return jwtUtil.generateToken(user.getUsername());
   }
 
-  public CompletableFuture<String> login(AuthRequest req) {
+  public String login(AuthRequest req) {
     return userRepository.findByUsername(req.username)
         .filter(u -> passwordEncoder.matches(req.password, u.getPassword()))
-        .map(u -> CompletableFuture.completedFuture(jwtUtil.generateToken(u.getUsername())))
+        .map(u -> jwtUtil.generateToken(u.getUsername()))
         .orElseThrow(() -> new RuntimeException("Invalid credentials"));
   }
 }

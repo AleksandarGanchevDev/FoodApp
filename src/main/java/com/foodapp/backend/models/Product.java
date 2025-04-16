@@ -3,6 +3,8 @@ package com.foodapp.backend.models;
 import jakarta.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Product {
     @Id
@@ -17,10 +19,12 @@ public class Product {
     private double price;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
     @OneToMany(mappedBy = "product")
+    @JsonIgnore
     private List<OrderProduct> orderProducts;
 
     // Getters and Setters

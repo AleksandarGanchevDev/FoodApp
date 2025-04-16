@@ -1,6 +1,5 @@
 package com.foodapp.backend.controllers;
 
-import java.util.concurrent.CompletableFuture;
 import com.foodapp.backend.dto.AuthRequest;
 import com.foodapp.backend.dto.AuthResponse;
 import com.foodapp.backend.services.UserService;
@@ -20,12 +19,12 @@ public class AuthController {
   }
 
   @PostMapping("/register")
-  public CompletableFuture<AuthResponse> register(@RequestBody User user) {
-    return userService.register(user).thenApply(AuthResponse::new);
+  public AuthResponse register(@RequestBody User user) {
+    return new AuthResponse(userService.register(user));
   }
 
   @PostMapping("/login")
-  public CompletableFuture<AuthResponse> login(@RequestBody AuthRequest request) {
-    return userService.login(request).thenApply(AuthResponse::new);
+  public AuthResponse login(@RequestBody AuthRequest request) {
+    return new AuthResponse(userService.login(request));
   }
 }

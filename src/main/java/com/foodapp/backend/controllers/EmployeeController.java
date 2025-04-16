@@ -1,6 +1,5 @@
 package com.foodapp.backend.controllers;
 
-import com.foodapp.backend.dto.ProductDTO;
 import com.foodapp.backend.models.Product;
 import com.foodapp.backend.models.Restaurant;
 import com.foodapp.backend.services.ProductService;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping("/api/employee")
@@ -30,43 +28,45 @@ public class EmployeeController {
   }
 
   @GetMapping("/products")
-  public CompletableFuture<List<ProductDTO>> getAllProducts() {
+  public List<Product> getAllProducts() {
     return productService.getAllProducts();
   }
 
   @PostMapping("/products")
-  public CompletableFuture<ResponseEntity<Product>> addProduct(@RequestBody Product product) {
-    return productService.addProduct(product).thenApply(ResponseEntity::ok);
+  public ResponseEntity<Product> addProduct(@RequestBody Product product) {
+    return ResponseEntity.ok(productService.addProduct(product));
   }
 
   @PutMapping("/products/{id}")
-  public CompletableFuture<ResponseEntity<Product>> updateProduct(@PathVariable Long id, @RequestBody Product product) {
-    return productService.updateProduct(id, product).thenApply(ResponseEntity::ok);
+  public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product product) {
+    return ResponseEntity.ok(productService.updateProduct(id, product));
   }
 
   @DeleteMapping("/products/{id}")
-  public CompletableFuture<ResponseEntity<Void>> deleteProduct(@PathVariable Long id) {
-    return productService.deleteProduct(id).thenApply(v -> ResponseEntity.noContent().build());
+  public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+    productService.deleteProduct(id);
+    return ResponseEntity.noContent().build();
   }
 
   @GetMapping("/restaurants")
-  public CompletableFuture<List<Restaurant>> getAllRestaurants() {
+  public List<Restaurant> getAllRestaurants() {
     return restaurantService.getAllRestaurants();
   }
 
   @PostMapping("/restaurants")
-  public CompletableFuture<ResponseEntity<Restaurant>> addRestaurant(@RequestBody Restaurant restaurant) {
-    return restaurantService.addRestaurant(restaurant).thenApply(ResponseEntity::ok);
+  public ResponseEntity<Restaurant> addRestaurant(@RequestBody Restaurant restaurant) {
+    return ResponseEntity.ok(restaurantService.addRestaurant(restaurant));
   }
 
   @PutMapping("/restaurants/{id}")
-  public CompletableFuture<ResponseEntity<Restaurant>> updateRestaurant(@PathVariable Long id,
+  public ResponseEntity<Restaurant> updateRestaurant(@PathVariable Long id,
       @RequestBody Restaurant restaurant) {
-    return restaurantService.updateRestaurant(id, restaurant).thenApply(ResponseEntity::ok);
+    return ResponseEntity.ok(restaurantService.updateRestaurant(id, restaurant));
   }
 
   @DeleteMapping("/restaurants/{id}")
-  public CompletableFuture<ResponseEntity<Void>> deleteRestaurant(@PathVariable Long id) {
-    return restaurantService.deleteRestaurant(id).thenApply(v -> ResponseEntity.noContent().build());
+  public ResponseEntity<Void> deleteRestaurant(@PathVariable Long id) {
+    restaurantService.deleteRestaurant(id);
+    return ResponseEntity.noContent().build();
   }
 }
