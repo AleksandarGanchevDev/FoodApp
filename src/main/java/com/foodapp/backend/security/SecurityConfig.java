@@ -26,8 +26,11 @@ public class SecurityConfig {
         .csrf(csrf -> csrf.disable())
         .authorizeHttpRequests(authz -> authz
             .requestMatchers("/api/auth/**").permitAll()
-            .requestMatchers("/api/test/**").hasAnyAuthority("ADMIN")
+            // .requestMatchers("/api/test/**").hasAnyAuthority("ADMIN")
             .requestMatchers("/api/employee/**").hasAnyAuthority("ADMIN", "EMPLOYEE")
+            .requestMatchers("/api/customer/**").hasAnyAuthority("ADMIN", "CUSTOMER")
+            .requestMatchers("/api/supplier/**").hasAnyAuthority("ADMIN", "SUPPLIER")
+            .requestMatchers("/api/stats/**").hasAnyAuthority("ADMIN")
             .anyRequest().authenticated())
         .sessionManagement(session -> session
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS))

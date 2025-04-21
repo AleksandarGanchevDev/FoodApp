@@ -3,10 +3,13 @@ package com.foodapp.backend.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
 import java.time.LocalDate;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.ManyToOne;
 import java.util.List;
+
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.JoinColumn;
@@ -16,12 +19,16 @@ import jakarta.persistence.Table;
 @Table(name = "`order`")
 public class Order {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "supplier_id")
+    private User supplier;
 
     private LocalDate orderDate;
 
@@ -46,6 +53,14 @@ public class Order {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public User getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(User supplier) {
+        this.supplier = supplier;
     }
 
     public LocalDate getOrderDate() {

@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Restaurant {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;

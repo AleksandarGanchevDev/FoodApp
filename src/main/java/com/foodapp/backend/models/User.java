@@ -9,6 +9,8 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.OneToMany;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class User {
     @Id
@@ -23,6 +25,7 @@ public class User {
     private Role role;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Order> orders;
 
     @OneToMany(mappedBy = "supplier")

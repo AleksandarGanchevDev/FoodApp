@@ -1,14 +1,17 @@
 package com.foodapp.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
 public class OrderProduct {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "order_id")
     private Order order;
 

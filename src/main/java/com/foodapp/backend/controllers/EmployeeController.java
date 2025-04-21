@@ -22,11 +22,6 @@ public class EmployeeController {
     this.restaurantService = restaurantService;
   }
 
-  @GetMapping("/admin")
-  public String adminEndpoint() {
-    return "Admin access granted!";
-  }
-
   @GetMapping("/products")
   public List<Product> getAllProducts() {
     return productService.getAllProducts();
